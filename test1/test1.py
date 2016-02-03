@@ -50,6 +50,11 @@ class LagestTrianglePath(object):
         """
         From an element in line get the element in next line which product
         expensive path.
+        Example rule:
+        0
+        1 2
+        1 2 3
+        From '2' in row 2nd can only go down to '2' or '3' in row 3rd.
         """
         if prev_line[i] > prev_line[i+1]:
             return (
@@ -74,6 +79,9 @@ class LagestTrianglePath(object):
         return paths, line
 
     def get_max_path(self):
+        """
+        Get max path from n-1 th line to n th line for each item in n-1 th line
+        """
         with open(self.tempfile, 'w') as tempfile:
             for i, line in enumerate(self.reverse_lines(self.filename)):
                 line = self.parse_line(line)
@@ -89,6 +97,7 @@ class LagestTrianglePath(object):
 
     def parse_result_line(self, line):
         """
+        Parse result line to get list of tuple.
         """
         eles = [ele for ele in re.split(r'\s+', line) if ele]
         return [
@@ -96,18 +105,30 @@ class LagestTrianglePath(object):
             ]
 
     def last_line_of_input_file(self):
+        """
+        Return the last line of input file.
+        """
         inputfile = self.reverse_lines(self.filename)
         last_line_of_input_file = inputfile.next()
         return self.parse_line(last_line_of_input_file)
 
     def write_results_2_file(self, results):
+        """
+        Write max path to 'output.txt'.
+        """
         with open(self.outfile, 'wb') as f:
             f.write('-'.join(str(num) for num in results))
 
     def remove_temp_file(self):
+        """
+        Remove 'temp.txt' which was generate by process find max path.
+        """
         pass
 
     def compute_max_path(self):
+        """
+        Compute max path and write it to 'output.txt'.
+        """
         self.get_max_path()
 
         last_line_of_input_file = self.last_line_of_input_file()
@@ -130,54 +151,52 @@ class LagestTrianglePath(object):
 
         self.write_results_2_file(path)
 
-        print "find maximun path successful"
-        print "path in file output.txt"
+        print "Find maximun path successful!"
+        print "Path in file output.txt"
 
 
 class LagestTrianglePathWithNewRulerPath(LagestTrianglePath):
-    pass
+
+    @staticmethod
+    def get_path_for_one_element(curr_line, prev_line, i):
+        """
+        From an element in line get the element in next line which product
+        expensive path.
+        Example rule:
+        0
+        1 2
+        1 2 3
+        1 2 3 4
+        From '3' in row 3rd can go down to '2' or '3' or '4' in row 4th.
+        """
+        if i == 0:
+            if prev_line[i] > prev_line[i+1]:
+                return (
+                    (curr_line[i], i), curr_line[i] + prev_line[i]
+                    )
+            else:
+                return (
+                    (curr_line[i], i + 1), curr_line[i] + prev_line[i+1]
+                    )
+        else:
+            max_num = max(prev_line[i-1:i+2])
+            if max_num == prev_line[i-1]:
+                return (
+                    (curr_line[i], i - 1), curr_line[i] + prev_line[i-1]
+                    )
+            elif max_num == prev_line[i]:
+                return (
+                    (curr_line[i], i), curr_line[i] + prev_line[i]
+                    )
+            else:
+                return (
+                    (curr_line[i], i + 1), curr_line[i] + prev_line[i+1]
+                    )
 
 
 if __name__ == "__main__":
     import sys
-    test = LagestTrianglePath(sys.argv[1])
+    triang = LagestTrianglePath(sys.argv[1])
+    # triang = LagestTrianglePathWithNewRulerPath(sys.argv[1])
 
-    # test reverse line
-    # for l in test.reverse_lines():
-    #     print l
-
-    # test parse line
-    # test_line = "  1 2  3  4   5  "
-    # print test.parse_line(test_line)
-
-    # test get path method
-
-    # curr_line = [1]
-    # prev_line = [3, 4]
-    # print test.get_path_for_one_element(curr_line, prev_line, 0)
-
-    # curr_line = [9, 8]
-    # prev_line = [5, 2, 9]
-    # print test.get_path_for_one_element(curr_line, prev_line, 1)
-
-    # test get max path
-    # curr_line = [1]
-    # prev_line = [3, 4]
-    # print test.get_max_path_line(curr_line, prev_line)
-
-    # curr_line = [9, 8]
-    # prev_line = [5, 2, 9]
-    # print test.get_max_path_line(curr_line, prev_line)
-
-    # test
-    # test.get_max_path()
-
-    # test
-    # test_line = "  1,11 2,22  3,33  4,44   5,55  "
-    # print test.parse_result_line(test_line)
-
-    # test
-    # print test.last_line_of_input_file()
-
-    # test
-    test.compute_max_path()
+    triang.compute_max_path()

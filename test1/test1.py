@@ -117,7 +117,7 @@ class LagestTrianglePath(object):
         Write max path to 'output.txt'.
         """
         with open(self.outfile, 'wb') as f:
-            f.write('-'.join(str(num) for num in results))
+            f.write(' '.join(str(num) for num in results))
 
     def remove_temp_file(self):
         """

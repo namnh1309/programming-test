@@ -134,6 +134,10 @@ class LagestTrianglePath(object):
         print "path in file output.txt"
 
 
+class LagestTrianglePathWithNewRulerPath(LagestTrianglePath):
+    pass
+
+
 if __name__ == "__main__":
     import sys
     test = LagestTrianglePath(sys.argv[1])

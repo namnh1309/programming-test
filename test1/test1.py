@@ -156,6 +156,10 @@ class LagestTrianglePath(object):
 
 
 class LagestTrianglePathWithNewRulerPath(LagestTrianglePath):
+    """
+    Class LagestTrianglePathWithNewRulerPath is subclass of LagestTrianglePath
+    with new rule that was using to find max path was redefine.
+    """
 
     @staticmethod
     def get_path_for_one_element(curr_line, prev_line, i):

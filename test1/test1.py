@@ -123,7 +123,8 @@ class LagestTrianglePath(object):
         """
         Remove 'temp.txt' which was generate by process find max path.
         """
-        pass
+        if os.path.isfile(self.tempfile):
+            os.remove(self.tempfile)
 
     def compute_max_path(self):
         """
@@ -150,6 +151,7 @@ class LagestTrianglePath(object):
         path.append(num)
 
         self.write_results_2_file(path)
+        self.remove_temp_file()
 
         print "Find maximun path successful!"
         print "Path in file output.txt"

@@ -67,3 +67,8 @@ cần chạy lệnh
 
 kết quả đường đi cho giá trị lớn nhất được ghi ra file mặc định là `output.txt`
 
+hoặc
+```
+./test1.py
+```
+file mặc định chứa cấu trúc tam giác mà chương trình đọc sẽ là `input.txt`

@@ -10,7 +10,7 @@ class LagestTrianglePath(object):
     tempfile = "temp.txt"
     outfile = "output.txt"
 
-    def __init__(self, filename, delimiter=" "):
+    def __init__(self, filename='input.txt', delimiter=" "):
         self.filename = filename
         self.delimiter = delimiter
 
@@ -202,7 +202,11 @@ class LagestTrianglePathWithNewRulerPath(LagestTrianglePath):
 
 if __name__ == "__main__":
     import sys
-    triang = LagestTrianglePath(sys.argv[1])
-    # triang = LagestTrianglePathWithNewRulerPath(sys.argv[1])
+    if len(sys.argv) == 2:
+        triang = LagestTrianglePath(sys.argv[1])
+        # triang = LagestTrianglePathWithNewRulerPath(sys.argv[1])
+    else:
+        triang = LagestTrianglePath()
+        # triang = LagestTrianglePathWithNewRulerPath()
 
     triang.compute_max_path()

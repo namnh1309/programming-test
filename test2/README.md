@@ -151,7 +151,7 @@ lệnh(`Run Command`)
 Code demo gồm 2 chương trình 
 
 1. `tcpserver.py`: là server sẽ thực hiện các câu lệnh mà nó nhận được(chỉ chạy
-những lệnh liệt kê trong *list* `ALLOW_COMMANDS`
+những lệnh liệt kê trong *list* `ALLOW_COMMANDS`)
 
 2. `tcpclient.py`: là client sẽ gửi các lệnh đến `tcpserver.py`, nhận kết quả mà
 `tcpserver.py` trả về rồi hiển thị trên màn hình

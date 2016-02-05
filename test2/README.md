@@ -82,18 +82,18 @@ Hoạt động trên Slave Server
 
 #####Trên Master Server
 
-*Mail Server: Nơi nhận mail điều khiển của system admin 
-*Master Server: Nơi chứa chương trình thực hiên tác vụ điều khiển các server
+* Mail Server: Nơi nhận mail điều khiển của system admin 
+* Master Server: Nơi chứa chương trình thực hiên tác vụ điều khiển các server
 con
-*Deamon: Chương trình chạy ngầm kiểm tra xem có email điều khiển của sysadmin
+* Deamon: Chương trình chạy ngầm kiểm tra xem có email điều khiển của sysadmin
 hay ko, nếu có thì sẽ đọc dữ liệu từ mail và sẽ gọi các thành phần khác để thực
 thi email điều khiển của sysadmin.
-*User Database and Authentication: là thành phần thực hiện tác vụ kiểm tra tính
+* User Database and Authentication: là thành phần thực hiện tác vụ kiểm tra tính
 xác thực của sysadmin và dữ liệu trong email, quyền của sysadmin đối với server
 muốn chạy lệnh
-*Host Config: là một thành phần thao tác với 1 file cấu hình cho các Slave Server
+* Host Config: là một thành phần thao tác với 1 file cấu hình cho các Slave Server
 chụi sự điều khiển của Master Server
-*Send command: là gửi lệnh đến các Slave Server để service trên Slave Server thực thi
+* Send command: là gửi lệnh đến các Slave Server để service trên Slave Server thực thi
 
 * Server 1, Server 2 là các server được điều khiển bởi Master server
 
@@ -130,8 +130,8 @@ con
 
 #####Các thành phần
 
-Receive Command: nhận command từ Master Server
-Run Command: thực thi command trên Slave Server
+* Receive Command: nhận command từ Master Server
+* Run Command: thực thi command trên Slave Server
 
 ######Luồng chạy chương trình
 
@@ -140,3 +140,6 @@ Run Command: thực thi command trên Slave Server
 12. Run Command nhận được lệnh và thực thi lệnh đó rồi gửi kết quả thực thi lệnh
 về Receive Command
 8. Receive Command chuyển tiếp kết quả thực thi lệnh về Master Server
+
+###Demo(code 1-2 thành phần cơ bản)
+

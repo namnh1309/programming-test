@@ -145,8 +145,8 @@ về `Receive Command`
 8. `Receive Command` chuyển tiếp kết quả thực thi lệnh về `Master Server`
 
 ###Demo(code 1-2 thành phần cơ bản)
-Code demo phần gửi lệnh(`Send Command`), nhận lệnh qua network và phần thưc thi
-lệnh(`Run Command`)
+Code demo phần gửi lệnh(`Send Command`), nhận lệnh(`Receive Command`) qua
+network và phần thưc thi lệnh(`Run Command`)
 
 Code demo gồm 2 chương trình 
 

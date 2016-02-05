@@ -146,4 +146,23 @@ về Receive Command
 8. Receive Command chuyển tiếp kết quả thực thi lệnh về Master Server
 
 ###Demo(code 1-2 thành phần cơ bản)
+Code demo phần gửi lệnh(Send Command), nhận lệnh qua network và phần thưc thi
+lệnh(Run Command)
 
+Code demo gồm 2 chương trình 
+1. tcpserver.py: là server sẽ thực hiện các câu lệnh mà nó nhận được(chỉ chạy
+những lệnh liệt kê trong *list* `ALLOW_COMMANDS`
+2. tcpclient.py: là client sẽ gửi các lệnh đến tcpserver.py, nhận kết quả mà
+tcpserver.py trả về rồi hiển thị trên màn hình
+
+Để chạy chương trình demo cần mở 2 tab của terminal sau đó vào folder demo
+tab 1
+```
+./tcpserver.py
+```
+tab 2
+```
+./tcpclient.py
+```
+
+trong màn hình chạy của `tcpclient.py` gõ lệnh và xem kết quả trả về.
